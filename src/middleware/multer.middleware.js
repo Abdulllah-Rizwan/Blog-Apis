@@ -1,10 +1,13 @@
+import multer from "multer";
+
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
       cb(null, './public/temp');
     },
     filename: function (req, file, cb) {
-      const uniqueSuffix = ` ${new Date(Date.now())}-req.user._id `
-      cb(null, file.originalname + '-' + uniqueSuffix);
+      // const uniqueSuffix = `-${new Date()}-${req.user._id}`
+      // cb(null, file.originalname + '-' + uniqueSuffix);
+      cb(null, file.originalname)
     }
   });
   

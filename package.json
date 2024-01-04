@@ -15,7 +15,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "dev": " src/server.js"
+    "dev": "nodemon -r dotenv/config --experimental-json-modules src/server.js"
   },
   "keywords": [],
   "author": "",
