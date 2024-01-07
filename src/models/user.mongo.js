@@ -29,11 +29,22 @@ const userSchema = new mongoose.Schema({
         require:true
     },
     avatar:{
-        type:String,
-        require:true
+        url:{
+            type:String,
+            require:true,
+        },
+        publicId:{
+            type:String,
+            require:true,
+        }    
     },
     coverImage:{
-        type:String
+        url:{
+            type:String,
+        },
+        publicId:{
+            type:String,
+        }    
     },
     refreshToken:{
         type:String
