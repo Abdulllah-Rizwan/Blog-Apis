@@ -205,6 +205,13 @@ export const httpUpdateUserAccountDetails = asyncHandler(async (req, res) => {
     const fieldName = nonEmptyField[0];
     const fieldValue = fieldsToUpdate[fieldName];
 
+    if(fieldName === "username" || fieldName === "email") {
+        const ifUserAlreadyExist = await checkIfUserExists({ [fieldName]: fieldValue });
+        console.log(ifUserAlreadyExist)
+        if(ifUserAlreadyExist && ifUserAlreadyExist._id !== req.user._id) throw new ApiError(409,`${fieldName} already exists`);
+    }
+
+
     const user = await updateUserAccountDetails(req.user?._id,{ [fieldName]: fieldValue });
 
     return res.status(200).json(new ApiResponse(200,user,"Account details updated successfully"));

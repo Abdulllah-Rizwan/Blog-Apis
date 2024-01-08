@@ -19,7 +19,7 @@ export const checkIfUserExists = async ({ email, username }) => {
     } else if(username) {
         query.username = username;
     }
-
+    
     return await User.findOne(query);
 }
 
